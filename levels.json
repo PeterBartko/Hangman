@@ -1,0 +1,84 @@
+{
+    "words": [
+        {
+            "word": "burger king",
+            "help": "Fast food"
+        },
+        {
+            "word": "counter strike",
+            "help": "Game"
+        },
+        {
+            "word": "patek philippe",
+            "help": "Watch"
+        },
+        {
+            "word": "squirell",
+            "help": "Animal"
+        },
+        {
+            "word": "lamborghini",
+            "help": "Car"
+        },
+        {
+            "word": "mont blanc",
+            "help": "Mountain"
+        },
+        {
+            "word": "scrambled eggs",
+            "help": "Dish"
+        },
+        {
+            "word": "sweatshirt",
+            "help": "Clothing"
+        },
+        {
+            "word": "shanghai",
+            "help": "City"
+        },
+        {
+            "word": "tatra tea",
+            "help": "Alcohol"
+        },
+        {
+            "word": "the old man and the sea",
+            "help": "Book"
+        },
+        {
+            "word": "queen",
+            "help": "Music band"
+        },
+        {
+            "word": "empire state building",
+            "help": "Building"
+        },
+        {
+            "word": "vincent van gogh",
+            "help": "Famous painter"
+        },
+        {
+            "word": "back to the future",
+            "help": "Movie"
+        },
+        {
+            "word": "kanye west",
+            "help": "Rapper"
+        },
+        {
+            "word": "tulip",
+            "help": "Flower"
+        },
+        {
+            "word": "the north face",
+            "help": "Fashion brand"
+        },
+        {
+            "word": "captain america",
+            "help": "Movie character"
+        },
+        {
+            "word": "multiplication",
+            "help": "2 * 2"
+        }
+    ]
+}

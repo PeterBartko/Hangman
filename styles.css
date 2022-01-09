@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&family=Roboto:wght@400;500;700&family=Rock+Salt&display=swap');
+/* @import url('http://fonts.cdnfonts.com/css/callie-chalk-font'); */
+
+@font-face {
+    font-family: 'Callie Chalk Font';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Callie Chalk Font'), url('https://fonts.cdnfonts.com/s/31286/CallieChalkFont-Regular.woff') format('woff');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    font-family: 'Callie Chalk Font';
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("../images/bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+header {
+    color: white;
+    width: 100%;
+    height: 8rem;
+    display: grid;
+    font-size: larger;
+    place-items: center;
+}
+
+#app {
+    position: relative;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 128px);
+}
+
+#btn-play {
+    background: none;
+    border: 5px solid white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    transition: all .2s ease-in-out;
+    opacity: .8;
+    cursor: pointer;
+}
+
+#btn-play img {
+    transform: scale(3.5);
+}
+
+#btn-play:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+#game {
+    display: flex;
+    justify-content: space-between;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+    flex-direction: column;
+    color: white;
+    height: fit-content;
+    margin-top: 1.8rem;
+}
+
+article {
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    width: fit-content;
+    /* background-color: blueviolet; */
+}
+
+#bolo-slovo {
+    color: #dca714;
+    font-size: 1.5rem;
+}
+
+#hadanka-tu {
+    color: white;
+    width: fit-content;
+    padding: 0 0rem 0 0.7rem;
+    font-size: 3rem;
+    letter-spacing: .5rem;
+    /* background: rgb(255, 251, 0); */
+    text-align: center;
+    border-radius: .8rem;
+}
+
+.btn-help {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.p-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.p-wrap div {
+  display: flex;
+  gap: 1.5rem;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.abeceda {
+    gap: .5rem;
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(13, 1fr);
+    /* background-color: aqua; */
+    padding: 0 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.napoveda {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: auto;
+}
+
+.napoveda p {
+    color: white;
+}
+
+.letter {
+    background-color: white;
+    width: 30px;
+    /* padding: .4rem .6rem; */
+    border-radius: .5rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.ns {
+    user-select: none;
+    margin: 0 auto;
+    width: fit-content;
+    touch-action: none
+}
+
+.letter:hover {
+    background-color: #eee;
+}
+
+#sibenica {
+    width: 400px;
+    height: 550px;
+}
+
+
+#btn-reset {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+#hlaska {
+    color: #dca714;
+    font-size: 3rem;
+    text-align: center;
+}
+#hlaska.correct {
+    color: #3cdc14;
+}
+
+.hlaska-wrap {
+    text-align: center;
+}
+
+.hide {
+    display: none;
+}
+
+.dis {
+    background-color: rgb(219, 219, 219) !important;
+    opacity: .5 !important;
+    cursor: default !important;
+    transform: scale(.95) !important;
+}
+
+.hover {
+    background-color: rgba(255, 255, 255, 0.698) !important;
+}
+
+.highlight {
+    background-color: rgba(255, 255, 255, 0.376);
+}
+
+.how-to {
+    color: rgba(255, 255, 255, 0.548);
+    margin: 0 auto;
+    padding: 0 1rem 1rem 1rem;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    color: #2baa5c;
+    display: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+.overlay.visible {
+  display: flex;
+  animation: overlay-grow 500ms forwards;
+}
+.overlay-small-text {
+  font-size: .5em;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* width: 100%; */
+}
+
+@keyframes overlay-grow {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+        font-size: 0;
+    }
+    to {
+        background-color: rgba(0, 0, 0, .8);
+        font-size: 4rem;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    #app {
+        width: 100%;
+    }
+    #game {
+        flex-direction: column;
+    }
+    .abeceda {
+        display: flex;
+    }
+    .how-to {
+        margin: 3rem auto;
+    }
+}
+@media screen and (max-width: 535px) {
+    #sibenica {
+      height: 220px;
+    }
+    #hadanka-tu {
+        font-size: 8vw;
+        padding: 0;
+    }
+    .p-wrap div {
+        font-size: 5.3vw;
+    }
+    .right {
+        gap: 1rem;
+    }
+    .how-to {
+        margin: 3rem auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+@media print {
+    #game {
+        display: none !important;
+    }
+    #menu {
+        display: block !important;
+    }
+    #btn-play {
+        display: none !important;
+    }
+    article {
+        padding: 0 5rem;
+        font-size: 1rem;
+    }
+}
+
+
+

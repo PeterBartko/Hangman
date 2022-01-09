@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff">
+    <script src="./js/anime.min.js"></script>
+    <script src="./js/script.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- <link rel="manifest" href="./manifest.json"> -->
+    <title>Hangman</title>
+</head>
+<body>
+    <header>
+        <h1>Hangman</h1>
+    </header>
+    <div id="app">
+        <div class="overlay">
+            Congratulation!
+            <span class="overlay-small-text">You guessed {{ score }}/10 words</span>
+        </div>
+        <div v-show="show.menu" id="menu">
+            <button id="btn-play" @click="to_game">
+                <img src="./images/icons/play.svg" alt="">
+            </button>
+            <article>
+                <h2>About game</h2>
+                Hangman is an old school favorite, a word game where the goal is simply to find the missing letters and with them the whole word.
+                You will be presented with a number of underscore representing the missing letters you need to find.
+                Use the drag and drop to drag a letter into missing word (I recommend starting with vowels).
+                If your chosen letter exists in the answer, then all places in the answer where that letter appear will be revealed.
+                After you've revealed several letters, you may be able to guess what the answer is and fill in the remaining letters.
+                Every time you guess a letter wrong the hangman begins to appear, piece by piece.
+                Solve the puzzle before the hangman dies.
+            </article>
+        </div>
+
+        <div v-show="show.game" id="game">
+            <div class="left">
+                <svg id="sibenica" viewBox="0 0 400 550">
+                    <path stroke="#adadad" fill="none" stroke-width="4" d="M 2 550 L 2 2"></path>
+                    <path stroke="#adadad" fill="none" stroke-width="4" d="M 0 2 L 300 2"></path>
+                    <path stroke="#adadad" fill="none" stroke-width="4" d="M 2 100 L 100 2"></path>
+                    <path stroke="#adadad" fill="none" stroke-width="4" d="M 300 0 L 300 52"></path>
+                    <path class="path hide" id="path1" stroke="white" fill="none" stroke-width="4" d="M 300 50 A 50 50 0 1 1 299 50"></path>
+                    <path class="path hide" id="path2" stroke="white" fill="none" stroke-width="4" d="M 300 150 L 300 200 "></path>
+                    <path class="path hide" id="path3" stroke="white" fill="none" stroke-width="4" d="M 300 200 L 200 250 "></path>
+                    <path class="path hide" id="path4" stroke="white" fill="none" stroke-width="4" d="M 300 200 L 400 250"></path>
+                    <path class="path hide" id="path5" stroke="white" fill="none" stroke-width="4" d="M 300 200 L 300 300"></path>
+                    <path class="path hide" id="path6" stroke="white" fill="none" stroke-width="4" d="M 300 300 L 250 450"></path>
+                    <path class="path hide" id="path7" stroke="white" fill="none" stroke-width="4" d="M 300 300 L 350 450"></path>
+                </svg>
+            </div>
+            <div class="right">
+                <div class="hlaska-wrap">
+                    <p id="hlaska">{{ hlaska }}</p>
+                    <p id="bolo-slovo">{{ info.bolo }}</p>
+                </div>
+                <div class="p-wrap">
+                    <p @dragover="dragover" @dragleave="dragleave" :class="{hover: over, highlight: hl}" id="hadanka-tu">{{ current.hidden }}</p>
+                    <div>
+                        <p id="slovo">score</p> 
+                        <p id="info-lvl">{{ score }} / 10</p> 
+                    </div> 
+                </div>
+                <div class="napoveda">
+                    <button class="btn-help" @click="get_help">
+                        <img src="./images/icons/help.svg" alt="">
+                    </button>
+                    <p>{{ info.help }}</p>
+                </div>
+                <div class="abeceda">
+                    <div class="letter" draggable="true" id="A"><p class="ns">A</p></div>
+                    <div class="letter" draggable="true" id="B"><p class="ns">B</p></div>
+                    <div class="letter" draggable="true" id="C"><p class="ns">C</p></div>
+                    <div class="letter" draggable="true" id="D"><p class="ns">D</p></div>
+                    <div class="letter" draggable="true" id="E"><p class="ns">E</p></div>
+                    <div class="letter" draggable="true" id="F"><p class="ns">F</p></div>
+                    <div class="letter" draggable="true" id="G"><p class="ns">G</p></div>
+                    <div class="letter" draggable="true" id="H"><p class="ns">H</p></div>
+                    <div class="letter" draggable="true" id="I"><p class="ns">I</p></div>
+                    <div class="letter" draggable="true" id="J"><p class="ns">J</p></div>
+                    <div class="letter" draggable="true" id="K"><p class="ns">K</p></div>
+                    <div class="letter" draggable="true" id="L"><p class="ns">L</p></div>
+                    <div class="letter" draggable="true" id="M"><p class="ns">M</p></div>
+                    <div class="letter" draggable="true" id="N"><p class="ns">N</p></div>
+                    <div class="letter" draggable="true" id="O"><p class="ns">O</p></div>
+                    <div class="letter" draggable="true" id="P"><p class="ns">P</p></div>
+                    <div class="letter" draggable="true" id="Q"><p class="ns">Q</p></div>
+                    <div class="letter" draggable="true" id="R"><p class="ns">R</p></div>
+                    <div class="letter" draggable="true" id="S"><p class="ns">S</p></div>
+                    <div class="letter" draggable="true" id="T"><p class="ns">T</p></div>
+                    <div class="letter" draggable="true" id="U"><p class="ns">U</p></div>
+                    <div class="letter" draggable="true" id="V"><p class="ns">V</p></div>
+                    <div class="letter" draggable="true" id="W"><p class="ns">W</p></div>
+                    <div class="letter" draggable="true" id="X"><p class="ns">X</p></div>
+                    <div class="letter" draggable="true" id="Y"><p class="ns">Y</p></div>
+                    <div class="letter" draggable="true" id="Z"><p class="ns">Z</p></div>
+                </div>
+                <button id="btn-reset" @click="reset">
+                    <img id="btn-icon" src="./images/icons/reset.svg" alt="reset icon">
+                </button>
+            </div>
+        </div>
+        <div v-show="show.game" class="how-to">
+            <p>- drag letters into hidden word</p>
+            <p>- if you guess a letter wrong hangman starts to appear</p>
+            <p>- guess the word before hangman die</p>
+        </div>
+    </div>
+</body>
+</html>
